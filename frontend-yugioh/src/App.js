@@ -3,9 +3,9 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router'
 import './App.css'
 import Navbar from "./components/navbar/Navbar"
+import CardList from './components/cardList/CardList'
 
 function Home()    { return <h2>Home</h2> }
-function CardList() { return <h2>Cards</h2> }
 
 export default function App() {
   return (
