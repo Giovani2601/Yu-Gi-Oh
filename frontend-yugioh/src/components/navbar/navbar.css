@@ -1,0 +1,20 @@
+.bar {
+    padding: 10px 0 10px 10px;
+    background-color: black;
+    border-bottom: 3px solid red;
+}
+  
+.logo {
+    width: 200px;
+    height: auto;
+    left: 50%;
+    cursor: pointer;
+}
+
+.cardsLogo {
+    width: 80px;
+}
+
+.homeLogo {
+    width: 80px;
+}
