@@ -12,7 +12,7 @@ import './navbar.css';
 
 export default function ResponsiveAppBar() {
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container className="bar" disableGutters maxWidth={false}>
         <Toolbar disableGutters sx={{ display: 'flex', alignItems: 'center' }}>
           <Box sx={{ flex: 1, display: 'flex' }}>
