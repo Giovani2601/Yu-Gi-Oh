@@ -45,7 +45,7 @@ export function CardsProvider({ children }) {
       const types = await fetchAllCardTypes();
       dispatch({ type: 'SET_TYPES', payload: types });
     } catch (err) {
-      console.error('Erro carregando tipos:', err);
+      console.error('Erro ao carregar tipos:', err);
     }
   };
 
