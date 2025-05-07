@@ -1,20 +1,48 @@
+.appBar {
+    height: 64px;
+}
+
 .bar {
     padding: 10px 0 10px 10px;
     background-color: black;
     border-bottom: 3px solid red;
 }
-  
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.navSection {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.navSection-left {
+    justify-content: flex-start;
+}
+
+.navSection-center {
+    justify-content: center;
+}
+
+.navSection-right {
+    justify-content: flex-end;
+}
+
+.iconButton {
+    padding: 0;
+}
+
 .logo {
     width: 150px;
     height: auto;
-    left: 50%;
     cursor: pointer;
 }
 
+.homeLogo,
 .cardsLogo {
-    width: 80px;
-}
-
-.homeLogo {
     width: 80px;
 }

@@ -1,13 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { CardsContext } from '../../contexts/CardsContext';
 import { Box, Card, CardMedia, Alert, Pagination } from '@mui/material';
-import SearchBar from '../searchbar/Searchbar';
+import SearchBar from '../searchbar/SearchBar';
 import CardTypeSelect from '../cardTypeSelect/CardTypeSelect';
+import CardInfoModal from '../cardInfoModal/CardInfoModal';
+import './CardList.css';
 
 export default function CardsList() {
   const { data: cards, error } = useContext(CardsContext);
+  const [selectedCard, setSelectedCard] = useState(null);
   const [page, setPage] = useState(1);
-  const cardsPerPage = 20;
+  const cardsPerPage = 24;
   const pageCount = Math.ceil(cards.length / cardsPerPage);
 
   useEffect(() => {
@@ -19,18 +22,9 @@ export default function CardsList() {
   const currentCards = cards.slice(start, start + cardsPerPage);
 
   return (
-    <Box sx={{ p: 15, pb: 2, pt: 4, background: 'black', minHeight: '100vh' }}>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          gap: 1,
-          bgcolor: 'black',
-          pb: 2,
-          px: 2,
-        }}
-      >
+    <Box className="card-list-container">
+      {/* o card-list-header é um box que contém o cardTypeSelect e o searchBar, os dois filtros que podem ser aplicados na lista de cartas */}
+      <Box className="card-list-header">
         <CardTypeSelect />
         <SearchBar />
       </Box>
@@ -43,22 +37,13 @@ export default function CardsList() {
 
       {cards.length > 0 && (
         <>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: {
-                xs: 'repeat(2, 1fr)',
-                sm: 'repeat(3, 1fr)',
-                md: 'repeat(4, 1fr)',
-                lg: 'repeat(5, 1fr)',
-              },
-              gap: 2,
-            }}
-          >
+          { /* o card-grid é um box que contém as cartas, e o card-item é cada carta individual */}
+          <Box className="card-grid">
             {currentCards.map((card) => (
               <Card
                 key={card.id}
-                sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}
+                className="card-item"
+                onClick={() => setSelectedCard(card)}
               >
                 <CardMedia
                   component="img"
@@ -66,15 +51,15 @@ export default function CardsList() {
                   alt={card.name}
                   sx={{
                     width: '100%',
-                    height: { xs: 140, sm: 160, md: 200, lg: 240 },
-                    objectFit: 'contain',
+                    height: 'auto',
+                    objectFit: 'contain'
                   }}
                 />
               </Card>
             ))}
           </Box>
-
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+            { /* o Pagination é o componente que exibe a paginação, e o count é o número total de páginas */}
             <Pagination
               count={pageCount}
               page={page}
@@ -84,16 +69,27 @@ export default function CardsList() {
                   color: 'black',
                   fontWeight: 'bold',
                   backgroundColor: '#8B0000',
+                  '&:hover': {
+                    backgroundColor: '#a10000',
+                  },
                 },
                 '& .Mui-selected': {
-                  backgroundColor: 'red',
-                  color: 'black',
+                  backgroundColor: 'red !important',
+                  color: 'white',
+                  '&:hover': {
+                    backgroundColor: '#cc0000',
+                  },
                 },
               }}
             />
           </Box>
         </>
       )}
+      { /* o cardInfoModal é o modal que exibe as informações da carta, e ele é exibido quando uma carta é clicada */}
+      <CardInfoModal
+        card={selectedCard}
+        onClose={() => setSelectedCard(null)}
+      />
     </Box>
   );
 }

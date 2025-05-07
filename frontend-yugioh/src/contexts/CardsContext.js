@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect, useRef } from 'react';
 import { fetchAllCardTypes, fetchCardsByFilters } from '../cardService';
 
+// Define o estado inicial do contexto
 const initialState = {
   data: [],
   loading: false,
@@ -10,6 +11,7 @@ const initialState = {
   currentName: '',
 };
 
+// Define o reducer que irá gerenciar o estado do contexto
 function cardsReducer(state, action) {
   switch (action.type) {
     case 'SET_TYPES':
@@ -40,6 +42,7 @@ export function CardsProvider({ children }) {
   const [state, dispatch] = useReducer(cardsReducer, initialState);
   const abortRef = useRef();
 
+  // Função para carregar todos os tipos de cartas
   const loadTypes = async () => {
     try {
       const types = await fetchAllCardTypes();
@@ -49,6 +52,7 @@ export function CardsProvider({ children }) {
     }
   };
 
+  // Função para buscar cartas filtradas por tipo e nome
   const fetchFiltered = async (type, name) => {
     abortRef.current?.abort();
     const ac = new AbortController();
@@ -65,17 +69,20 @@ export function CardsProvider({ children }) {
     }
   };
 
+  // Função para buscar todas as cartas
   const fetchAll = () => {
     dispatch({ type: 'SET_TYPE', payload: '' });
     dispatch({ type: 'SET_NAME', payload: '' });
     fetchFiltered('', '');
   };
 
+  // Função para buscar cartas por nome
   const searchCards = (name) => {
     dispatch({ type: 'SET_NAME', payload: name });
     fetchFiltered(state.currentType, name);
   };
 
+  // Função para buscar cartas por tipo
   const fetchByType = (type) => {
     dispatch({ type: 'SET_TYPE', payload: type });
     fetchFiltered(type, state.currentName);
@@ -88,6 +95,7 @@ export function CardsProvider({ children }) {
   }, []);
 
   return (
+    // O CardsContext.Provider fornece o estado e as funções para os componentes filhos
     <CardsContext.Provider
       value={{
         ...state,

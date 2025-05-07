@@ -1,11 +1,9 @@
 // src/App.js
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router'
-import './App.css'
 import Navbar from "./components/navbar/Navbar"
 import CardList from './components/cardList/CardList'
-
-function Home()    { return <h2>Home</h2> }
+import Home from './components/home/Home'
 
 export default function App() {
   return (

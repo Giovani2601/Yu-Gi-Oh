@@ -1,0 +1,66 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1300;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.close-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.card-image {
+    flex-shrink: 0;
+    width: 350px !important;
+    height: auto;
+    object-fit: contain;
+    background-color: black;
+    padding: 40px;
+}
+
+.card-details {
+    padding: 40px;
+    width: 50%;
+    overflow-y: auto;
+}
+
+.card-name {
+    font-size: 30px;
+    font-weight: bolder !important;
+    font-family: 'Times New Roman', Times, serif !important;
+}
+.card-info {
+    font-size: 20px !important;
+    font-family: cursive !important;
+}
+
+.card-description {
+    font-size: 18px !important;
+    font-family: cursive !important;
+}
+
+.level-icon {
+    width: 15px;
+    margin-left: 7px;
+}

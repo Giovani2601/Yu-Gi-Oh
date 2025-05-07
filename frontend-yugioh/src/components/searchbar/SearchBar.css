@@ -1,0 +1,42 @@
+.search-bar-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+    margin-right: 16px;
+}
+
+.search-field {
+    width: 100%;
+    background-color: black;
+    border-radius: 4px;
+}
+
+.search-field .MuiInputBase-input {
+    color: white;
+}
+
+.search-field .MuiInputBase-input::placeholder {
+    color: white;
+    opacity: 0.5;
+}
+
+.search-field .MuiOutlinedInput-root fieldset {
+    border-color: red;
+}
+
+.search-field .MuiOutlinedInput-root:hover fieldset {
+    border-color: #8B0000;
+    border-width: 2px;
+}
+
+.search-field .MuiOutlinedInput-root.Mui-focused fieldset {
+    border-color: red;
+}
+
+.search-field .MuiCircularProgress-root {
+    color: red !important;
+}
+
+.search-field .MuiIconButton-root {
+    color: white;
+}

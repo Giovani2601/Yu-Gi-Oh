@@ -11,6 +11,7 @@ export default function CardTypeSelect() {
 
   return (
     <Box sx={{ mb: 2, mr: 2 }}>
+      {/* o cardTypeSelect é um box que contém o select, que é o filtro de tipo de carta */}
       <FormControl variant="outlined" size="medium" sx={{ minWidth: 140 }}>
         <InputLabel sx={{ color: 'white', opacity: 0.5 }}>Tipo de Carta</InputLabel>
         <Select
@@ -24,6 +25,7 @@ export default function CardTypeSelect() {
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
           }}
         >
+          {/* o menuItem é cada opção do select, e o value é o valor que será passado para a função fetchByType quando a opção for selecionada */}
           <MenuItem value="">
             <em>Qualquer</em>
           </MenuItem>

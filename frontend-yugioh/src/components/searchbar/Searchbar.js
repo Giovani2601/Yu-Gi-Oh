@@ -10,11 +10,13 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { CardsContext } from '../../contexts/CardsContext';
+import './SearchBar.css';
 
 export default function SearchBar() {
   const [input, setInput] = useState('');
   const { searchCards, fetchAll, loading } = useContext(CardsContext);
 
+  // Busca as cartas na API, e o fetchAll é uma função que busca todas as cartas na API
   const handleSearch = () => {
     const term = input.trim();
     if (term) {
@@ -24,53 +26,43 @@ export default function SearchBar() {
     }
   };
 
+  // Limpa o campo de busca e busca todas as cartas na API
   const handleClear = () => {
     setInput('');
     fetchAll();
   };
 
+  // Faz com que a busca seja feita ao pressionar a tecla Enter
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') handleSearch();
   };
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2, mr: 2 }}>
+    <Box className="search-bar-container">
+      {/* o search-field é um campo de texto que contém o ícone de busca e o ícone de limpar */}
       <TextField
+        className="search-field"
         placeholder="Buscar cartas"
         variant="outlined"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyPress}
-        sx={{
-          width: '100%',
-          backgroundColor: 'black',
-          borderRadius: 1,
-          '& .MuiInputBase-input': {
-            color: 'white',
-            '&::placeholder': { color: 'white', opacity: 0.5 },
-          },
-          '& .MuiOutlinedInput-root': {
-            '& fieldset': { borderColor: 'red' },
-            '&:hover fieldset': { borderColor: '#8B0000', borderWidth: 2 },
-            '&.Mui-focused fieldset': { borderColor: 'red' },
-          },
-        }}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
               {loading ? (
-                <CircularProgress size={24} sx={{ color: 'red' }} />
+                <CircularProgress size={24} />
               ) : (
                 <>
                   {input && (
                     <Tooltip title="Limpar busca">
-                      <IconButton onClick={handleClear} edge="end" sx={{ color: 'white' }}>
+                      <IconButton onClick={handleClear} edge="end">
                         <CloseIcon fontSize="small" />
                       </IconButton>
                     </Tooltip>
                   )}
                   <Tooltip title="Buscar carta">
-                    <IconButton onClick={handleSearch} edge="end" sx={{ color: 'white' }}>
+                    <IconButton onClick={handleSearch} edge="end">
                       <SearchIcon />
                     </IconButton>
                   </Tooltip>

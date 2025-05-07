@@ -1,5 +1,6 @@
 const URL_BASE = 'https://db.ygoprodeck.com/api/v7';
 
+// Usa a API do YGOPRODeck para buscar todas as cartas
 export async function fetchAllCards() {
   const res = await fetch(`${URL_BASE}/cardinfo.php`);
   if (!res.ok) throw new Error(`Erro ${res.status}`);
@@ -7,6 +8,7 @@ export async function fetchAllCards() {
   return payload.data;
 }
 
+// Busca cartas que contenham o termo no nome
 export async function fetchCardsByName(name, signal) {
   try {
     const res = await fetch(
@@ -31,12 +33,14 @@ export async function fetchCardsByName(name, signal) {
   }
 }
 
+// Busca todas as cartas e retorna os tipos únicos
 export async function fetchAllCardTypes() {
   const cards = await fetchAllCards();
   const types = Array.from(new Set(cards.map(c => c.type)));
   return types.sort();
 }
 
+// Busca cartas filtradas por tipo e nome
 export async function fetchCardsByFilters({ type = '', name = '' } = {}, signal) {
   const params = new URLSearchParams();
   if (type) params.append('type', type);
