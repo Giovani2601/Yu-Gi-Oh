@@ -48,7 +48,7 @@ export default function CardInfoModal({ card, onClose }) {
     </div>
   );
 
-  { /* o ReactDOM.createPortal é o hook usado para renderizar o modal fora da hierarquia do DOM do componente pai, permitindo que ele seja exibido 'na frente' do componente principal */}
+  // o ReactDOM.createPortal é o hook usado para renderizar o modal fora da hierarquia do DOM do componente pai, permitindo que ele seja exibido 'na frente' do componente principal
   return ReactDOM.createPortal(
     modalContent,
     document.body
