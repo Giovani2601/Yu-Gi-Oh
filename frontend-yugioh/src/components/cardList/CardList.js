@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { CardsContext } from '../../contexts/CardsContext';
 import { Box, Card, CardMedia, Alert, Pagination } from '@mui/material';
-import SearchBar from '../searchbar/SearchBar';
+import Searchbar from '../searchbar/Searchbar';
 import CardTypeSelect from '../cardTypeSelect/CardTypeSelect';
 import CardInfoModal from '../cardInfoModal/CardInfoModal';
 import './CardList.css';
@@ -23,10 +23,10 @@ export default function CardsList() {
 
   return (
     <Box className="card-list-container">
-      {/* o card-list-header é um box que contém o cardTypeSelect e o searchBar, os dois filtros que podem ser aplicados na lista de cartas */}
+      {/* o card-list-header é um box que contém o cardTypeSelect e o searchbar, os dois filtros que podem ser aplicados na lista de cartas */}
       <Box className="card-list-header">
         <CardTypeSelect />
-        <SearchBar />
+        <Searchbar />
       </Box>
 
       {error && (
