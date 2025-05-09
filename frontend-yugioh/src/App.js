@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from "./components/navbar/navbar"
 import CardList from './components/cardList/CardList'
 import Home from './components/home/Home'
