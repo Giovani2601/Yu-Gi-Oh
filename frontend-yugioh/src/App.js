@@ -1,7 +1,7 @@
 // src/App.js
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router'
-import Navbar from "./components/navbar/Navbar"
+import Navbar from "./components/navbar/navbar"
 import CardList from './components/cardList/CardList'
 import Home from './components/home/Home'
 

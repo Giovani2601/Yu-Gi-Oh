@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import YuGiOhTitle from '../assets/yugioh-logo.png';
 import HomeLogo from '../assets/yugioh-home.png';
 import CardsLogo from '../assets/yugioh-cards.png';
-import './Navbar.css';
+import './navbar.css';
 
 export default function ResponsiveAppBar() {
   return (
